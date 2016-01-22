@@ -7,10 +7,27 @@
 <script>
     var str = "super easy code";
     var array = [1,2,3,4];
-    var array2 = array;
 
+    var array2 = array;
+    var str = array.valueOf();
     var nan = '1' - array;
-    alert(nan);
+//    alert(typeof array[1]);
+//    alert(1 + array);
+
+    for (var property in array) {
+//        if (this.propertyIsEnumerable(property)) {
+//            console.log(property);
+//        }
+//        console.log(property);
+    }
+
+    array.forEach(function (x) {
+        console.log(x);
+    })
+    var obj = Object.create({x : 1, y : 2});
+
+    alert(array);
+
 //    console.log(nan);
 //    console.log(str);
 </script>
