@@ -57,6 +57,10 @@ function frame() {
     }
 }
 
-$('#hide').click(function () {
+$('button').click(function () {
     $('p').hide()
+})
+
+$('p.clickToHide').click(function () {
+    $(this).slideUp('slow')
 })
