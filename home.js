@@ -59,8 +59,23 @@ function frame() {
 
 $('button').click(function () {
     $('p').hide()
-})
+});
 
-$('p.clickToHide').click(function () {
-    $(this).slideUp('slow')
-})
+var p = $('p.clickToHide');
+
+
+p.click(function () {
+    $(this).slideUp('slow');
+});
+
+p.offset(function (index, para) {
+    return {left: para.left + 100, top: para.top};
+});
+
+p.append(function (index, string) {
+    if (index === 0) {
+        return '<br/>' + 'This is an extra string';
+    }
+});
+
+$('a').clone().appendTo('#copy');
