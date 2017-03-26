@@ -1,1 +1,1 @@
-console.log("123");
+alert(typeof document.getElementById("purchases"));
