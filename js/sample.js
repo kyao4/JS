@@ -1,5 +1,5 @@
 function changePic(whichPic) {
-	if (!document.getElementById("placeholder")) return false
+	if (!document.getElementById("placeholder")) return false;
     var source = whichPic.getAttribute("href");
     var target = document.getElementById("placeholder");
     target.setAttribute("src", source);
@@ -38,13 +38,13 @@ window.onload = load;
 
 function load() {
 	if (!document.getElementsByTagName) {
-		return false
+		return false;
 	}
 	if (!document.getElementById) {
-		return false
+		return false;
 	}
 	if (!document.getElementById("purchases")) {
-		return false
+		return false;
 	}
 	var list = document.getElementById("purchases");
 	var a = list.getElementsByTagName("a");
@@ -54,4 +54,13 @@ function load() {
 		}
 		a[i].onkeypress = a[i].onclick
 	}
+
+	var para = document.createElement("p");
+	var text = document.createTextNode("插入结点");
+	para.appendChild(text);
+	if (document.getElementById("testdiv")) {
+		var testdiv = document.getElementById("testdiv");
+		testdiv.appendChild(para);
+	}
+
 }
