@@ -1,0 +1,12 @@
+body {
+	color:white;
+	background-color: black;
+}
+
+#purchases {
+	list-style: none;
+}
+
+#purchases li {
+	display: inline;
+}

@@ -1,10 +1,14 @@
 function changePic(whichPic) {
+	if (!document.getElementById("placeholder")) return false
     var source = whichPic.getAttribute("href");
     var target = document.getElementById("placeholder");
     target.setAttribute("src", source);
-    var text = whichPic.getAttribute("title");
-    var description = document.getElementById("description");
-    description.firstChild.nodeValue = text;
+   	if (document.getElementById("description")) {
+   		var text = whichPic.getAttribute("title");
+    	var description = document.getElementById("description");
+    	description.firstChild.nodeValue = text;	
+   	}
+   	return true
 }
 
 // function countChildren() {
@@ -25,3 +29,29 @@ function changePic(whichPic) {
 //         alert(attri);
 //     }
 // }
+
+function popup(which) {
+	window.open(which, "popup", "width=320, height=480");
+}
+
+window.onload = load;
+
+function load() {
+	if (!document.getElementsByTagName) {
+		return false
+	}
+	if (!document.getElementById) {
+		return false
+	}
+	if (!document.getElementById("purchases")) {
+		return false
+	}
+	var list = document.getElementById("purchases");
+	var a = list.getElementsByTagName("a");
+	for(var i = 0; i < a.length; i++) {
+		a[i].onclick = function() {
+			return !changePic(this);
+		}
+		a[i].onkeypress = a[i].onclick
+	}
+}
