@@ -34,9 +34,7 @@ function popup(which) {
 	window.open(which, "popup", "width=320, height=480");
 }
 
-window.onload = load;
-
-function load() {
+function prepareclick() {
 	if (!document.getElementsByTagName) {
 		return false;
 	}
@@ -64,3 +62,48 @@ function load() {
 	}
 
 }
+
+
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      oldonload();
+      func();
+    }
+  }
+}
+
+function insertAfter(newElement,targetElement) {
+  var parent = targetElement.parentNode;
+  if (parent.lastChild == targetElement) {
+    parent.appendChild(newElement);
+  } else {
+    parent.insertBefore(newElement,targetElement.nextSibling);
+  }
+}
+
+
+function preparePlaceholder() {
+	if (!document.createElement) return false;
+	if (!document.createTextNode) return false;
+	if (!document.insertBefore) return false;	
+	if (!document.getElementById("purchases")) return false;
+	var placeholder = document.createElement("img");
+	placeholder.setAttribute("id", "placeholder");
+	placeholder.setAttribute("src", "images/placeholder.jpg");
+	placeholder.setAttribute("alt", "my image gallery");
+	var description = document.createElement("p");
+	description.setAttribute("id", "description");
+	var disctext = document.createTextNode("描述文字");
+	description.appendChild(disctext);
+	var purchases = document.getElementById("purchases");
+	insertAfter(placeholder, purchases);
+	insertAfter(description, purchases);
+}
+
+
+addLoadEvent(prepareclick);
+addLoadEvent(preparePlaceholder);
