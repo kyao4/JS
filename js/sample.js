@@ -105,5 +105,24 @@ function preparePlaceholder() {
 }
 
 
+function positionMessage() {
+	if (!document.getElementById) return false;
+	if (!document.getElementById("message")) return false;
+	var message = document.getElementById("message");
+	message.style.position = "absolute";
+	message.style.left = "250px";
+	message.style.top = "50px";
+	move = setTimeout("moveMessage()", 2000);
+}
+
+function moveMessage() {
+	if (!document.getElementById) return false;
+	if (!document.getElementById("message")) return false;
+	var message = document.getElementById("message");
+	message.style.left = "100px";
+}
+
+
 addLoadEvent(prepareclick);
 addLoadEvent(preparePlaceholder);
+addLoadEvent(positionMessage);
