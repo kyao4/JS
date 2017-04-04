@@ -112,14 +112,34 @@ function positionMessage() {
 	message.style.position = "absolute";
 	message.style.left = "250px";
 	message.style.top = "50px";
-	move = setTimeout("moveMessage()", 2000);
+	moveElement("message", 0, 100, 10);
 }
 
-function moveMessage() {
+function moveElement(elemId, toppos, leftpos, inter) {
 	if (!document.getElementById) return false;
-	if (!document.getElementById("message")) return false;
-	var message = document.getElementById("message");
-	message.style.left = "100px";
+	if (!document.getElementById(elemId)) return false;
+	var elem = document.getElementById(elemId);
+	var top = parseInt(elem.style.top);
+	var left = parseInt(elem.style.left);
+	if (top == toppos && left == leftpos) {
+		return true;
+	}
+	if (top < toppos) {
+		top++;
+	}
+	if (top > toppos) {
+		top--;
+	}
+	if (left < leftpos) {
+		left++;
+	}
+	if (left > leftpos) {
+		left--;
+	}
+	elem.style.top = top + "px";
+	elem.style.left = left + "px";
+	var repeat = "moveElement('" + elemId + "'," + toppos + "," + leftpos + "," + inter + ")";
+	movement = setTimeout(repeat, inter);
 }
 
 
