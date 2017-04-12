@@ -138,9 +138,12 @@ function prepareSlide() {
 
 }
 
+function jQuery() {
+  $("<div id='example'>Hello, jQuery! <div>").appendTo(document.body);
+}
 
 
 
-
-addLoadEvent(highlightPage);
-addLoadEvent(prepareSlide);
+$(highlightPage);
+$(prepareSlide);
+$(jQuery);
